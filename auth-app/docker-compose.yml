@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      PORT: 5001
+      AUTH_DB_NAME: auth-db
+      AUTH_DB_USER: postgres
+      AUTH_DB_PASSWORD: mysecretpassword
+      AUTH_DB_HOST: db
+      AUTH_DB_DIALECT: postgres
+      SECRET: "!@#%@#gf^&bdsSsfSp!@F^R&sdf"
+    ports:
+      - 5001:5001
+    depends_on:
+      - db
+    networks:
+      - auth-network
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: auth-db
+    ports:
+      - 5432:5432
+    networks:
+      - auth-network
+volumes:
+  db-data:
+
+networks:
+  auth-network:
