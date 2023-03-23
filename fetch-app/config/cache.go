@@ -11,6 +11,10 @@ import (
 func SetCache(name string, data []byte, expiredDuration time.Duration) error {
 	filename := "cache/" + name + "_cache.json"
 	if _, err := os.Stat(filename); err != nil {
+		err := os.Mkdir("cache", os.ModePerm)
+		if err != nil && !os.IsExist(err) {
+			return err
+		}
 		d := fmt.Sprintf(`{"expiredAt": "%s","data": %s}`,
 			time.Now().Add(expiredDuration).Format("2006-01-02 15:04:05"),
 			string(data),
