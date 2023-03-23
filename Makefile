@@ -21,3 +21,6 @@ fetch-start:
 
 fetch-stop:
 	cd fetch-app/ && docker-compose stop
+
+test:
+	cd fetch-app/ && go test -mod=readonly -v ./... -covermode=count -coverprofile=profile.out && ENV_STAGE=test
