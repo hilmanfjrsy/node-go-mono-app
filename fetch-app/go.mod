@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/gin-gonic/gin v1.9.0
 	github.com/golang-jwt/jwt/v4 v4.5.0
-	github.com/gomodule/redigo v1.8.9
 	github.com/joho/godotenv v1.5.1
 )
 

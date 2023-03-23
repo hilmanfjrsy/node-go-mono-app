@@ -8,12 +8,10 @@ import (
 	"net/http"
 	"os"
 	"time"
-
-	"github.com/gomodule/redigo/redis"
 )
 
 func GetExchange() ([]byte, error) {
-	reply, err := redis.Bytes(config.Redis.Do("GET", "USDtoIDR"))
+	reply, err := config.GetCache("USDtoIDR")
 	if err == nil {
 		fmt.Println("Exchange from cache")
 		return reply, nil
@@ -36,7 +34,7 @@ func GetExchange() ([]byte, error) {
 	defer resp.Body.Close()
 
 	res, err := io.ReadAll(resp.Body)
-	_, err = config.Redis.Do("SET", "USDtoIDR", string(res), "EX", time.Hour.Abs().Seconds())
+	err = config.SetCache("USDtoIDR", res, time.Hour)
 	if err != nil {
 		log.Default().Println("Err set USDtoIDR redis:", err.Error())
 		return []byte{}, err
@@ -45,7 +43,7 @@ func GetExchange() ([]byte, error) {
 }
 
 func GetResource() ([]byte, error) {
-	reply, err := redis.Bytes(config.Redis.Do("GET", "resource-list"))
+	reply, err := config.GetCache("resource-list")
 	if err == nil {
 		fmt.Println("Resource from cache")
 		return reply, nil
@@ -65,7 +63,7 @@ func GetResource() ([]byte, error) {
 	defer resp.Body.Close()
 
 	res, err := io.ReadAll(resp.Body)
-	_, err = config.Redis.Do("SET", "resource-list", string(res), "EX", time.Hour.Abs().Seconds())
+	err = config.SetCache("resource-list", res, time.Hour)
 	if err != nil {
 		log.Default().Println("Err set resource-list redis:", err.Error())
 		return []byte{}, err

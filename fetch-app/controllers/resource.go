@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/gomodule/redigo/redis"
 )
 
 func GetResource(c *gin.Context) {
@@ -45,7 +44,7 @@ func GetResource(c *gin.Context) {
 		return
 	}
 
-	reply, err := redis.Bytes(config.Redis.Do("GET", "resource-usd"))
+	reply, err := config.GetCache("resource-usd")
 	if err == nil {
 		fmt.Println("Resource Usd from cache")
 		if err := json.Unmarshal(reply, &newResources); err != nil {
@@ -75,7 +74,7 @@ func GetResource(c *gin.Context) {
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
-	_, err = config.Redis.Do("SET", "resource-usd", string(b), "EX", time.Hour.Abs().Seconds())
+	err = config.SetCache("resource-usd", b, time.Hour)
 	if err != nil {
 		log.Default().Println("Err set resource-usd redis:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
@@ -87,7 +86,7 @@ func GetResource(c *gin.Context) {
 func GetResourceAggregate(c *gin.Context) {
 	var resources []models.Resources
 	var newResources []utils.ResourceByProvinsi
-	replyAgg, err := redis.Bytes(config.Redis.Do("GET", "resource-agg"))
+	replyAgg, err := config.GetCache("resource-agg")
 	if err == nil {
 		fmt.Println("Resource Agg from cache")
 		if err := json.Unmarshal(replyAgg, &newResources); err != nil {
@@ -98,7 +97,7 @@ func GetResourceAggregate(c *gin.Context) {
 		utils.ResponseSuccess(c, http.StatusOK, newResources)
 		return
 	}
-	reply, err := redis.Bytes(config.Redis.Do("GET", "resource-usd"))
+	reply, err := config.GetCache("resource-usd")
 	if err != nil {
 		res, err := utils.GetResource()
 		if err != nil {
@@ -127,7 +126,7 @@ func GetResourceAggregate(c *gin.Context) {
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
-	_, err = config.Redis.Do("SET", "resource-agg", string(b), "EX", time.Hour.Abs().Seconds())
+	err = config.SetCache("resource-agg", b, time.Hour)
 	if err != nil {
 		log.Default().Println("Err set resource-usd redis:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
