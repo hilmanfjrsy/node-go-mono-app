@@ -1,9 +1,12 @@
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/23338632-9791196b-28ef-40e8-accd-ea988535b9c5?action=collection%2Ffork&collection-url=entityId%3D23338632-9791196b-28ef-40e8-accd-ea988535b9c5%26entityType%3Dcollection%26workspaceId%3D375a5178-dc50-49c8-9ed3-5295f7908d43#?env%5Bnode-go-mono-app%5D=W3sia2V5Ijoibm9kZSIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxLyIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxLyIsInNlc3Npb25JbmRleCI6MH0seyJrZXkiOiJnbyIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyLyIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyLyIsInNlc3Npb25JbmRleCI6MX0seyJrZXkiOiJ0b2tlbiIsInZhbHVlIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWRXTnZNV3R6SWl3aWNHaHZibVVpT2lJd09EazVNVEl6TVRFeE1URWlMQ0p5YjJ4bElqb2lZV1J0YVc0aUxDSnBZWFFpT2pFMk56azFORGd6TmpVc0ltVjRjQ0k2TVRZM09UVTFOVFUyTlgwLnFBeGEzN3JWdVlDZTNJdWNhdGo3V09yUm0wclFKaUdFMHZTLXZkeWJFWXciLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWRXTnZNV3R6SWl3aWNHaHZibVVpT2lJd09EazVNVEl6TVRFeE1URWlMQ0p5YjJ4bElqb2lZV1J0YVc0aUxDSnBZWFFpT2pFMk56azFORGd6TmpVc0ltVjQuLi4iLCJzZXNzaW9uSW5kZXgiOjJ9XQ==)
+Postman Collection
+==================================
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/23338632-9791196b-28ef-40e8-accd-ea988535b9c5?action=collection%2Ffork&collection-url=entityId%3D23338632-9791196b-28ef-40e8-accd-ea988535b9c5%26entityType%3Dcollection%26workspaceId%3D375a5178-dc50-49c8-9ed3-5295f7908d43#?env%5Bnode-go-mono-app%5D=W3sia2V5Ijoibm9kZSIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxLyIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxLyIsInNlc3Npb25JbmRleCI6MH0seyJrZXkiOiJnbyIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyLyIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyLyIsInNlc3Npb25JbmRleCI6MX0seyJrZXkiOiJ0b2tlbiIsInZhbHVlIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWMybHRjMmx0SWl3aWNHaHZibVVpT2lJd09EazVNVEl6TVRFeElpd2ljbTlzWlNJNkltRmtiV2x1SWl3aWFXRjBJam94TmpjNU5UWTROREE0TENKbGVIQWlPakUyTnprMU56VTJNRGg5LkdSLXZxOUJSNXk2RzNSS0tLaTJKXzF2aDktVkdUUFJTX2wzUnlXRkIwQ2siLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWMybHRjMmx0SWl3aWNHaHZibVVpT2lJd09EazVNVEl6TVRFeElpd2ljbTlzWlNJNkltRmtiV2x1SWl3aWFXRjBJam94TmpjNU5UWTROREE0TENKbGVIQWkuLi4iLCJzZXNzaW9uSW5kZXgiOjJ9XQ==)
 
 Getting Started
 ==================================
 
-Welcome to My Monorepo Golang and NodeJs App! This is a simple application that consists of a Golang and a Node.js API.
+Welcome to my monorepo Golang and NodeJs App! This is a simple application that consists of a Golang and a NodeJs.
 
 Prerequisites
 -------------
@@ -74,7 +77,7 @@ Running with docker
 
 Running locally
 ------------------------------
-### auth-app
+### Auth App
 1. Navigate to the `auth-app` directory.
 2. Install dependencies using this command
     ```
@@ -86,7 +89,7 @@ Running locally
     ```
     This will start the `auth-app` and it will be accessible at http://localhost:5001.
 
-### fetch-app
+### Fetch App
 1. Navigate to the `fetch-app` directory.
 2. Install dependencies using this command
     ```
@@ -97,3 +100,7 @@ Running locally
     go run main.go
     ```
     This will start the `fetch-app` and it will be accessible at http://localhost:5002.
+
+## Diagram C4 Model
+
+![C4 Diagram](c4.png)
