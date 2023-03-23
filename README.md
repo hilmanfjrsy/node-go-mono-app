@@ -25,81 +25,70 @@ To install App, follow these steps:
 
 1.  Clone this repository from GitHub:
     
+    ```bash
+    $ git clone https://github.com/hilmanfjrsy/node-go-mono-app.git
     ```
-    git clone https://github.com/hilmanfjrsy/node-go-mono-app.git
-    ```
-    
+
 2.  Change into the directory:
     
-    ```
-    cd node-go-mono-app
+    ```bash
+    $ cd node-go-mono-app
     ```
 
 Running with docker
 ------------------------------
 
--   Build the app with the following command:
-    ```
-    make fetch-up
-    ```
-    and
-    ```
-    make auth-up
-    ```
-    This will start the `fetch-app` and it will be accessible at http://localhost:5002 for the `auth-app` it will be accessible at http://localhost:5001.
+-   Run `docker-compose` using `makefile` with the following command:
+    ```bash
+    # Run and build container and image docker 
+    $ make fetch-up
+    $ make auth-up
+    #This will start the `fetch-app` and it will be accessible at http://localhost:5002 for the `auth-app` it will be accessible at http://localhost:5001
 
--  Down the app with the following command:
-    ```
-    make fetch-down
-    ```
-    and
-    ```
-    make auth-down
-    ```
+    # Down container and image docker
+    $ make fetch-down
+    $ make auth-down
 
--  Start the app with the following command:
-    ```
-    make fetch-start
-    ```
-    and
-    ```
-    make auth-start
-    ```
+    # Start docker container
+    $ make fetch-start
+    $ make auth-start
 
--  Stop the app with the following command:
+    # Stop docker container
+    $ make fetch-stop
+    $ make auth-stop
     ```
-    make fetch-stop
-    ```
-    and
-    ```
-    make auth-stop
-    ```
-
 Running locally
 ------------------------------
 ### Auth App
 1. Navigate to the `auth-app` directory.
 2. Install dependencies using this command
-    ```
-    npm install
+    ```bash
+    $ npm install
     ```
 3. Run the following command to run the `auth-app`:
-    ```
-    npm start
+    ```bash
+    $ npm start
     ```
     This will start the `auth-app` and it will be accessible at http://localhost:5001.
 
 ### Fetch App
 1. Navigate to the `fetch-app` directory.
 2. Install dependencies using this command
-    ```
-    go mod download
+    ```bash
+    $ go mod download
     ```
 3. Run the following command to run the `fetch-app`:
-    ```
-    go run main.go
+    ```bash
+    $ go run main.go
     ```
     This will start the `fetch-app` and it will be accessible at http://localhost:5002.
+
+Running Unit Test
+------------------------------
+Run unit test for `fetch-app` with the following command:
+```bash
+$ make test
+```
 
 ## Diagram C4 Model
 
