@@ -36,7 +36,7 @@ func GetExchange() ([]byte, error) {
 	res, err := io.ReadAll(resp.Body)
 	err = config.SetCache("USDtoIDR", res, time.Hour)
 	if err != nil {
-		log.Default().Println("Err set USDtoIDR redis:", err.Error())
+		log.Default().Println("Err set USDtoIDR cache:", err.Error())
 		return []byte{}, err
 	}
 	return res, err
@@ -65,7 +65,7 @@ func GetResource() ([]byte, error) {
 	res, err := io.ReadAll(resp.Body)
 	err = config.SetCache("resource-list", res, time.Hour)
 	if err != nil {
-		log.Default().Println("Err set resource-list redis:", err.Error())
+		log.Default().Println("Err set resource-list cache:", err.Error())
 		return []byte{}, err
 	}
 	return res, err

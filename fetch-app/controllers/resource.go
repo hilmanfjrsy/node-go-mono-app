@@ -76,7 +76,7 @@ func GetResource(c *gin.Context) {
 	}
 	err = config.SetCache("resource-usd", b, time.Hour)
 	if err != nil {
-		log.Default().Println("Err set resource-usd redis:", err.Error())
+		log.Default().Println("Err set resource-usd cache:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -128,7 +128,7 @@ func GetResourceAggregate(c *gin.Context) {
 	}
 	err = config.SetCache("resource-agg", b, time.Hour)
 	if err != nil {
-		log.Default().Println("Err set resource-usd redis:", err.Error())
+		log.Default().Println("Err set resource-usd cache:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}

@@ -4,22 +4,13 @@ services:
   go-app:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     environment:
       PORT: 5002
-      REDIS_HOST: redis
       API_KEY_ENCHAGE_RATES: "a2lPdXXru7MON55V868qzNJqQOSNXLJO"
       SECRET: "!@#%@#gf^&bdsSsfSp!@F^R&sdf"
     ports:
       - 5002:5002
-    depends_on:
-      - redis
-    networks:
-      - fetch-network
-  redis:
-    image: redis
-    ports:
-      - 6379:6379
     networks:
       - fetch-network
 
