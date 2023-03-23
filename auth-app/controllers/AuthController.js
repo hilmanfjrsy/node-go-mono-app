@@ -114,7 +114,7 @@ class AuthController {
         return res.status(400).send({ message: "invalid body" })
       }
 
-      jwt.verify(body.token, process.env.SECRET, async function (err, decoded) {
+      return jwt.verify(body.token, process.env.SECRET, async function (err, decoded) {
         if (!err) {
           return res.status(200).send({
             data: decoded,
@@ -122,7 +122,6 @@ class AuthController {
         }
         return res.status(401).send(err)
       })
-      return res.status(400).send()
     } catch (error) {
       return res.send(error)
     }
