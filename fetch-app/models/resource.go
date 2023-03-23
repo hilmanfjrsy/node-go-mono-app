@@ -7,7 +7,7 @@ type Resources struct {
 	AreaProvinsi string    `json:"area_provinsi"`
 	Komoditas    string    `json:"komoditas"`
 	Price        string    `json:"price"`
-	Usd          float64   `json:"usd"`
+	Usd          float64   `json:"usd,omitempty"`
 	Size         string    `json:"size"`
 	TglParsed    time.Time `json:"tgl_parsed"`
 	Timestamp    string    `json:"timestamp"`

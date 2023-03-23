@@ -24,34 +24,52 @@ func GetResource(c *gin.Context) {
 		return
 	}
 
-	var resources, newResources []models.Resources
+	var resources []models.Resources
 	if err := json.Unmarshal(res, &resources); err != nil {
 		log.Default().Println("Err unmarshal resource:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
+	utils.ResponseSuccess(c, http.StatusOK, resources)
+}
+
+func GetResourceWithCurrency(c *gin.Context) {
+	var resources, newResources []models.Resources
+	reply, err := config.GetCache("resource-currency")
+	if err == nil {
+		fmt.Println("Resource currency from cache")
+		if err := json.Unmarshal(reply, &newResources); err != nil {
+			log.Default().Println("Err unmarshal resource currency:", err.Error())
+			utils.ResponseError(c, http.StatusBadRequest, err.Error())
+		}
+		utils.ResponseSuccess(c, http.StatusOK, newResources)
+		return
+	}
+
+	res, err := utils.GetResource()
+	if err != nil {
+		log.Default().Println("Err get resource currency:", err.Error())
+		utils.ResponseError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if err := json.Unmarshal(res, &resources); err != nil {
+		log.Default().Println("Err unmarshal resource currency:", err.Error())
+		utils.ResponseError(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
 	rate, err := utils.GetExchange()
 	if err != nil {
-		log.Default().Println("Err get exchange", err.Error())
+		log.Default().Println("Err get exchange currency", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
 	var rateCurrency models.Currency
 	if err := json.Unmarshal(rate, &rateCurrency); err != nil {
-		log.Default().Println("Err unmarshal exchange:", err.Error())
+		log.Default().Println("Err unmarshal exchange currency:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
-		return
-	}
-
-	reply, err := config.GetCache("resource-usd")
-	if err == nil {
-		fmt.Println("Resource Usd from cache")
-		if err := json.Unmarshal(reply, &newResources); err != nil {
-			log.Default().Println("Err unmarshal resource usd:", err.Error())
-			utils.ResponseError(c, http.StatusBadRequest, err.Error())
-		}
-		utils.ResponseSuccess(c, http.StatusOK, newResources)
 		return
 	}
 
@@ -70,13 +88,13 @@ func GetResource(c *gin.Context) {
 	}
 	b, err := json.Marshal(newResources)
 	if err != nil {
-		log.Default().Println("Err marshal new resource:", err.Error())
+		log.Default().Println("Err marshal new resource currency:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
-	err = config.SetCache("resource-usd", b, time.Hour)
+	err = config.SetCache("resource-currency", b, time.Hour)
 	if err != nil {
-		log.Default().Println("Err set resource-usd cache:", err.Error())
+		log.Default().Println("Err set resource-currency cache:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -97,7 +115,7 @@ func GetResourceAggregate(c *gin.Context) {
 		utils.ResponseSuccess(c, http.StatusOK, newResources)
 		return
 	}
-	reply, err := config.GetCache("resource-usd")
+	reply, err := config.GetCache("resource-currency")
 	if err != nil {
 		res, err := utils.GetResource()
 		if err != nil {
@@ -128,7 +146,7 @@ func GetResourceAggregate(c *gin.Context) {
 	}
 	err = config.SetCache("resource-agg", b, time.Hour)
 	if err != nil {
-		log.Default().Println("Err set resource-usd cache:", err.Error())
+		log.Default().Println("Err set resource-currency cache:", err.Error())
 		utils.ResponseError(c, http.StatusBadRequest, err.Error())
 		return
 	}

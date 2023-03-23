@@ -21,7 +21,9 @@ func main() {
 	r := gin.Default()
 	resources := r.Group("/resources")
 
-	resources.GET("", middleware.AuthMiddleware, controllers.GetResource)
-	resources.GET("/aggregate", middleware.AuthMiddleware, middleware.OnlyAdmin, controllers.GetResourceAggregate)
+	resources.Use(middleware.AuthMiddleware)
+	resources.GET("", controllers.GetResource)
+	resources.GET("/currency", controllers.GetResourceWithCurrency)
+	resources.GET("/aggregate", middleware.OnlyAdmin, controllers.GetResourceAggregate)
 	r.Run()
 }
