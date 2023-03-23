@@ -2,7 +2,7 @@ auth-up:
 	cd auth-app/ && docker-compose up -d 
 
 auth-down:
-	cd auth-app/ && docker-compose down 
+	cd auth-app/ && docker-compose down --rmi local
 
 auth-start:
 	cd auth-app/ && docker-compose start
@@ -14,7 +14,7 @@ fetch-up:
 	cd fetch-app/ && docker-compose up -d 
 
 fetch-down:
-	cd fetch-app/ && docker-compose down 
+	cd fetch-app/ && docker-compose down --rmi local
 
 fetch-start:
 	cd fetch-app/ && docker-compose start
