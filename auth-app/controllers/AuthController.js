@@ -52,7 +52,7 @@ class AuthController {
         return res.status(400).send({ message })
       }
     } catch (error) {
-      return res.send(error)
+      return res.status(500).send(error)
     }
   }
 
@@ -94,7 +94,7 @@ class AuthController {
         return res.status(400).send({ message })
       }
     } catch (error) {
-      return res.send(error)
+      return res.status(500).send(error)
     }
   }
 
@@ -123,7 +123,7 @@ class AuthController {
         return res.status(401).send(err)
       })
     } catch (error) {
-      return res.send(error)
+      return res.status(500).send(error)
     }
   }
 }
